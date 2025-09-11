@@ -1,33 +1,35 @@
 ﻿using ObserverPattern.Interfaces;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ObserverPattern.Displays
 {
     internal class StatisticsDisplay : Observer, DisplayElement
     {
-        private float temperature;
-        private float sumTemperature = 0;
-        private float maxTemp = 0;
-        private float minTemp = 0;
-        private int countUpdated = 0;
-        private Subject weatherData;
-        public StatisticsDisplay(Subject weatherData) 
-        { 
-            // Set the field and register itself with the weatherdata subject
+        private float totalTemp = 0;
+        private float maxTemp = float.MinValue;
+        private float minTemp = float.MaxValue;
+        private int measurements = 0;
+
+        public StatisticsDisplay(Subject weatherData)
+        {
+            weatherData.RegisterObserver(this);
         }
+
         public void Update(float temp, float humidity, float pressure)
         {
-            // Set the correct fields with the relevant parameters
+            totalTemp += temp;
+            measurements++;
+
+            maxTemp = Math.Max(maxTemp, temp);
+            minTemp = Math.Min(minTemp, temp);
+
             Display();
         }
 
         public void Display()
         {
-            // Print the average, maximum and minimum temperature. Use appropriate fields
+            float avgTemp = totalTemp / measurements;
+            Console.WriteLine($"Gemiddelde: {avgTemp:F1}°C | Max: {maxTemp:F1}°C | Min: {minTemp:F1}°C");
         }
     }
 }
