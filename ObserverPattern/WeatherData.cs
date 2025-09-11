@@ -1,9 +1,6 @@
 ﻿using ObserverPattern.Interfaces;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ObserverPattern
 {
@@ -18,21 +15,29 @@ namespace ObserverPattern
         {
             observers = new List<Observer>();
         }
-        // instance variables
+
         public void NotifyObservers()
         {
-            // Loop through the observers and call Update() with the appropriate fields
+            foreach (var observer in observers)
+            {
+                observer.Update(temperature, humidity, pressure);
+            }
         }
 
         public void RegisterObserver(Observer o)
-        {
-            // Check if observer is not already subscribed, if not then add to the list of observers
+        {       
+            if (!observers.Contains(o))
+            {
+                observers.Add(o);
+            }
         }
 
         public void RemoveObserver(Observer o)
         {
-            // Check if observer is subscribed, if they are then remove from the list of observers
-           
+            if (observers.Contains(o))
+            {
+                observers.Remove(o);
+            }
         }
 
         public void MeasurementChanged()
@@ -40,9 +45,9 @@ namespace ObserverPattern
             NotifyObservers();
         }
 
-        public void SetMeasurements(float tempereature, float humidity, float pressure)
+        public void SetMeasurements(float temperature, float humidity, float pressure)
         {
-            this.temperature = tempereature;
+            this.temperature = temperature;
             this.humidity = humidity;
             this.pressure = pressure;
             MeasurementChanged();
