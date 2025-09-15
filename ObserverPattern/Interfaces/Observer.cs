@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ObserverPattern.Interfaces
 {
-    internal interface Observer
+    public interface Observer
     {
         void Update(float temp, float humidity, float pressure);
     }

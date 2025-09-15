@@ -6,7 +6,7 @@ namespace ObserverPattern
 {
     internal class WeatherData : Subject
     {
-        private List<Observer> observers;
+        private readonly List<Observer> observers;
         private float temperature;
         private float humidity;
         private float pressure;
@@ -16,16 +16,8 @@ namespace ObserverPattern
             observers = new List<Observer>();
         }
 
-        public void NotifyObservers()
-        {
-            foreach (var observer in observers)
-            {
-                observer.Update(temperature, humidity, pressure);
-            }
-        }
-
         public void RegisterObserver(Observer o)
-        {       
+        {
             if (!observers.Contains(o))
             {
                 observers.Add(o);
@@ -37,6 +29,14 @@ namespace ObserverPattern
             if (observers.Contains(o))
             {
                 observers.Remove(o);
+            }
+        }
+
+        public void NotifyObservers()
+        {
+            foreach (var observer in observers)
+            {
+                observer.Update(temperature, humidity, pressure);
             }
         }
 
