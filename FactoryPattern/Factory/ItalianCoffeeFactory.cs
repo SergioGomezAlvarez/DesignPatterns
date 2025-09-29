@@ -6,19 +6,19 @@ namespace DecoratorPattern.Factories
 {
     internal class ItalianCoffeeFactory : AbstractCoffeeFactory
     {
-        public override Beverage CreateDrink(DrinkType type, Size size = Size.TALL)
+        protected override Beverage CreateDrink(DrinkType type)
         {
             switch (type)
             {
                 case DrinkType.Espresso:
-                    return new Espresso(size);
+                    return new Espresso();
                 case DrinkType.Cappuccino:
-                    Beverage cappuccino = new Espresso(size);
+                    Beverage cappuccino = new Espresso();
                     cappuccino = new SteamedMilk(cappuccino);
                     cappuccino = new MilkFoam(cappuccino);
                     return cappuccino;
                 case DrinkType.Mocha:
-                    Beverage mocha = new Espresso(size);
+                    Beverage mocha = new Espresso();
                     mocha = new Mocha(mocha);
                     mocha = new SteamedMilk(mocha);
                     mocha = new Whip(mocha);
