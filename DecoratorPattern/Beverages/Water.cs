@@ -1,36 +1,22 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using DecoratorPattern.Beverages;
 
-namespace DecoratorPattern.Beverages
+namespace DecoratorPattern.Condiments
 {
-    internal class Water : Beverage
+    internal class Water : CondimentDecorator
     {
-        public Water(Size size = Size.TALL, Beverage beverage = null)
+        public Water(Beverage beverage)
         {
-            this.Size = size;
-            description = "Water";
             this.baseBeverage = beverage;
-        }
-
-        public override string GetDescription()
-        {
-            if (baseBeverage != null)
-            {
-                return baseBeverage.GetDescription() + ", " + description;
-            }
-            return description;
         }
 
         public override double cost()
         {
-            if (baseBeverage != null)
-            {
-                return 0.50 + baseBeverage.cost();
-            }
-            return 0.50;
+            return 0.20 + baseBeverage.cost();
+        }
+
+        public override string GetDescription()
+        {
+            return baseBeverage.GetDescription() + ", Water";
         }
     }
 }

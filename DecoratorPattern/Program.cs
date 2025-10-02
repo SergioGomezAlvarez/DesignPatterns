@@ -11,12 +11,12 @@ namespace DecoratorPattern
             PrintBeverage(espresso);
 
             Beverage lungo = new Espresso(Size.TALL);
-            lungo = new Water(lungo.Size, lungo);
+            lungo = new Water(lungo);
             PrintBeverage(lungo);
 
             Beverage americano = new Espresso(Size.VENDI);
-            americano = new Water(americano.Size, americano);
-            americano = new Water(americano.Size, americano);
+            americano = new Water(americano);
+            americano = new Water(americano);
             PrintBeverage(americano);
         }
 
@@ -27,7 +27,5 @@ namespace DecoratorPattern
             Console.WriteLine("Prijs: $" + beverage.cost().ToString("#.##"));
             Console.WriteLine();
         }
-
-
     }
 }
