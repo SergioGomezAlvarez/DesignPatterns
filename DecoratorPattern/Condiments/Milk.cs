@@ -2,9 +2,9 @@
 
 namespace DecoratorPattern.Condiments
 {
-    internal class Cream : CondimentDecorator
+    internal class Milk : CondimentDecorator
     {
-        public Cream(Beverage beverage)
+        public Milk(Beverage beverage)
         {
             this.baseBeverage = beverage;
             this.Size = beverage.Size;
@@ -31,7 +31,7 @@ namespace DecoratorPattern.Condiments
 
         public override string GetDescription()
         {
-            return baseBeverage.GetDescription() + ", Cream";
+            return baseBeverage.GetDescription() + ", Milk";
         }
     }
 }

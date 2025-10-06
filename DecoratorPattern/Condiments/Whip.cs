@@ -10,7 +10,7 @@ namespace DecoratorPattern.Condiments
             this.Size = beverage.Size;
         }
 
-        protected double GetCondimentPriceBySize(double tallPrice, double grandePrice, double vendiPrice)
+        private double GetCondimentPriceBySize(double tallPrice, double grandePrice, double vendiPrice)
         {
             switch (baseBeverage.Size)
             {
