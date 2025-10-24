@@ -10,7 +10,7 @@ namespace FacadePattern
     {
         public void On()
         {
-
+            Console.WriteLine("Lights on.");
         }
 
         public void Off()
@@ -20,7 +20,7 @@ namespace FacadePattern
 
         public void Dim(int value)
         {
-
+            Console.WriteLine("Lights dimmed to 10%.");
         }
     }
 }

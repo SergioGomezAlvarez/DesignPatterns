@@ -16,15 +16,16 @@ namespace FacadePattern
 
         public void On()
         {
-
+            Console.WriteLine("DVD player on.");
         }
         public void Off()
         {
+            Console.WriteLine("DVD player off.");
 
         }
         public void Eject()
         {
-
+            Console.WriteLine("DVD ejected.");
         }
         public void Pause()
         {
@@ -32,7 +33,7 @@ namespace FacadePattern
         }
         public void Play(string movie)
         {
-
+            Console.WriteLine($"Playing movie \"{movie}\"...");
         }
         public void SetSurroundAudio()
         {
@@ -44,7 +45,7 @@ namespace FacadePattern
         }
         public void Stop()
         {
-
+            Console.WriteLine("DVD stopped.");
         }
     }
 }
